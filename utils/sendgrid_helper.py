@@ -42,10 +42,11 @@ def validate_and_init_postmark():
 # Initialize pada import
 postmark_client, TEMPLATE_ID_INT = validate_and_init_postmark()
 
-def send_login_email(to_email: str, name: str, username: str, password: str, login_link: str) -> dict:
+def send_login_email(to_email: str, name: str, username: str, password: str) -> dict:
     """
     Mengirim email login info menggunakan template Postmark dengan error handling yang robust
     """
+    login_link = "https://www.hubsensi.com/auth/login"
     # Validasi client
     if not postmark_client or not TEMPLATE_ID_INT:
         raise RuntimeError("Postmark client tidak tersedia. Periksa konfigurasi environment variables.")
